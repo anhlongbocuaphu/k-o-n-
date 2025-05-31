@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mưa Bánh Kẹo Vịt Con</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sky">
+        </div>
+    <img src="https://i.ibb.co/k6sfPst0/z6659470858494-05552168f859a39c14bd9c271ae7c396.jpg" alt="Vịt " class="duck">
+
+    <script>
+        const sky = document.querySelector('.sky');
+        const candyEmojis = ['🍬', '🍭', '🍫', '🍩', '🍪', '🍰']; // Các emoji bánh kẹo
+        const numberOfCandies = 50; // Số lượng bánh kẹo rơi
+
+        function createCandy() {
+            const candy = document.createElement('div');
+            candy.classList.add('candy');
+            candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
+            candy.style.left = Math.random() * 100 + 'vw';
+            candy.style.animationDuration = Math.random() * 2 + 3 + 's'; // Thời gian rơi ngẫu nhiên từ 3-5s
+            candy.style.opacity = Math.random() * 0.7 + 0.3; // Độ trong suốt ngẫu nhiên
+            sky.appendChild(candy);
+
+            // Xóa bánh kẹo sau khi rơi hết để tránh tràn DOM
+            candy.addEventListener('animationiteration', () => {
+                candy.remove();
+                createCandy(); // Tạo bánh kẹo mới liên tục
+            });
+        }
+
+        // Tạo bánh kẹo ban đầu
+        for (let i = 0; i < numberOfCandies; i++) {
+            createCandy();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Ẩn thanh cuộn nếu có */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #FFCCE5; /* Màu hồng nhẹ */
+    position: relative;
+    font-family: 'Segoe UI Emoji', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Hỗ trợ hiển thị emoji */
+}
+
+/* Các đoạn CSS còn lại giữ nguyên */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cho phép tương tác với các phần tử bên dưới */
+    z-index: 1;
+}
+
+.candy {
+    position: absolute;
+    font-size: 2em; /* Kích thước bánh kẹo */
+    animation: fall linear infinite;
+    transform: translateY(-100%); /* Bắt đầu từ trên cao */
+    white-space: nowrap; /* Đảm bảo emoji không bị ngắt dòng */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh); /* Rơi xuống cuối màn hình */
+    }
+}
+
+.duck {
+    width: 150px; /* Kích thước chú vịt */
+    height: auto;
+    position: relative;
+    z-index: 2; /* Đảm bảo chú vịt ở trên bánh kẹo */
+    animation: floatDuck 3s ease-in-out infinite alternate; /* Hiệu ứng vịt bơi nhẹ */
+}
+
+@keyframes floatDuck {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-15px);
+    }
+}
